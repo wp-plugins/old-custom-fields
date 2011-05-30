@@ -1,0 +1,273 @@
+@charset "utf-8";
+
+/* OCF_SETUP_PAGE.CSS  */
+
+
+/*---------------------------------------
+*	
+*	GROBAL TAGS
+*
+*	BASIC_STRUCTURE
+*		B01.COMMON
+*		B02.MAIN CONT
+*		B03.SiDE CONT
+*
+*--------------------------------------*/
+
+/**--------------------------------------
+
+	GROBAL TAGS
+	
+---------------------------------------**/
+
+.ocf_text_bold
+{
+	font-weight: bold;
+}
+
+.ocf_noaction
+{
+	opacity: .30;
+	filter: alpha(opacity=30);
+	cursor: inherit;
+}
+
+
+/**--------------------------------------
+
+	BASIC_STRUCTURE
+	(in div#wpbody-content)
+	
+---------------------------------------**/
+
+div#wpbody-content
+{
+}
+
+div#wpbody-content div.wrap
+{
+}
+
+div#wpbody-content div.wrap h2
+{
+}
+
+div#wpbody-content div.wrap ul#subsubsub
+{
+}
+
+div#wpbody-content div.wrap ul#ocf_add_btn_box
+{
+	clear: left;
+	margin: 0;
+	padding: 15px 0 0;
+}
+
+div#wpbody-content div.wrap ul#ocf_add_btn_box li
+{
+	float: left;
+	margin: 0 2px 0 0;
+	padding: 0 0 12px;
+}
+
+div#wpbody-content div.wrap div#ocf_sample_cont
+{
+	display: none;
+}
+
+div#wpbody-content div.wrap ul#ocf_sample_list
+{
+	display: none;
+}
+
+/**--------------------------------------
+	B01.COMMON
+---------------------------------------**/
+
+/* ocf_setup_form */
+
+div#wpbody-content div.wrap form#ocf_setup_form
+{
+	clear: both;
+}
+
+form#ocf_setup_form div#ocf_main_cont
+{
+	float: left;
+	margin: 2px 0;
+	padding:0 18px 0 0;
+	width: 660px;
+}
+
+form#ocf_setup_form div#ocf_side_cont
+{
+	float: left;
+	margin: 2px 0;
+	padding: 15px 20px;
+	border: 1px solid #CDD5D5;
+	width: 180px;
+	text-align: center;
+	background: #ffffff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+form#ocf_setup_form p.ocf_comment
+{
+	padding: 3px 8px;
+	font-size: 11px;
+	color: #999999;
+}
+
+
+/**--------------------------------------
+	B02.MAIN CONT
+---------------------------------------**/
+
+div#ocf_main_cont div.ocf_setup_box,
+div#ocf_main_cont div.ocf_noset_box
+{
+	clear: left;
+	margin: 0 0 10px;
+	padding: 5px 5px 0;
+	border: 1px solid #E3E3E3;
+	background: #F1F1F1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+div#ocf_main_cont div.ocf_setup_box p#ocf_no_setting
+{
+	padding: 3px 8px;
+	font-size: 11px;
+}
+
+div#ocf_main_cont div.ocf_setup_box h4
+{
+	margin: 10px 0 10px 8px;
+}
+
+/* ocf_table */
+
+div#ocf_main_cont div.ocf_setup_box table.ocf_table
+{
+	border-top: 1px solid #E3E3E3;
+	width: 100%;
+}
+
+div#ocf_main_cont div.ocf_setup_box table.ocf_table th
+{
+	padding: 3px 8px;
+	border-bottom: 1px solid #E3E3E3;
+	width: 100px;
+	text-align: left;
+	font-size: 13px;
+	font-weight: normal;
+}
+
+div#ocf_main_cont div.ocf_setup_box table.ocf_table td
+{
+	padding: 3px 8px;
+	border-bottom: 1px solid #E3E3E3;
+	font-size: 11px;
+}
+
+div#ocf_main_cont div.ocf_setup_box table.ocf_table td textarea
+{
+	width: 25em;
+}
+
+/* ocf_box_btn_box */
+
+div#ocf_main_cont div.ocf_setup_box ul.ocf_box_btn_box
+{
+	clear: left;
+	padding: 5px 5px 0;
+}
+
+div#ocf_main_cont div.ocf_setup_box ul.ocf_box_btn_box li
+{
+	float: left;
+	padding: 0 3px;
+}
+
+/* ocf_list_box */
+
+div#ocf_main_cont div.ocf_setup_box table.ocf_table ul.ocf_list_box
+{
+}
+
+div#ocf_main_cont div.ocf_setup_box table.ocf_table ul.ocf_list_box li
+{
+	border-bottom: 2px dotted #E3E3E3;
+}
+
+div#ocf_main_cont div.ocf_setup_box table.ocf_table ul.ocf_list_box li p,
+div#ocf_main_cont div.ocf_setup_box table.ocf_table ul.ocf_list_box li select
+{
+	float: left;
+	margin: 1px;
+	padding: 1px 3px 0 1px;
+	line-height: 140%;
+	vertical-align: middle;
+}
+
+div#ocf_main_cont div.ocf_setup_box table.ocf_table ul.ocf_list_box li p.ocf_list_btn
+{
+	margin: 1px;
+	padding: 3px 1px 0 0;
+}
+
+div#ocf_main_cont div.ocf_setup_box table.ocf_table ul.ocf_list_box li select,
+div#ocf_main_cont div.ocf_setup_box table.ocf_table ul.ocf_list_box li p.ocf_list_check
+{
+	margin: 3px 3px 1px 1px;
+}
+
+div#ocf_main_cont input.middle_text
+{
+	width: 100px;
+}
+
+/* ocf_side_cont */
+
+div#ocf_side_cont p
+{
+	font-size: 11px;
+}
+
+
+/*---------------------------------------
+
+	MODULES
+	
+---------------------------------------**/
+
+.clearfix:after
+{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clearfix
+{
+	display: inline-block;
+}
+
+/* \*/
+* html .clearfix
+{ 
+	height: 1%;
+}
+
+.clearfix
+{
+	display: block;
+}
+/* */
+
+
+
