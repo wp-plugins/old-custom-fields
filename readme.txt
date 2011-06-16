@@ -2,9 +2,9 @@
 Contributors: Akifumi Nishikawa
 Donate link: http://www.oldoffice.com/
 Tags: custom field,multisite,resize image
-Requires at least: 3.1.2ja
-Tested up to: 1.1.2
-Stable tag: 1.1.2
+Requires at least: 3.1.3ja
+Tested up to: 1.1.3
+Stable tag: 1.1.3
 
 	original custom fields setting plugin.
 	
@@ -23,6 +23,13 @@ Stable tag: 1.1.2
 
 
 == Changelog ==
+
+	= 1.1.3 =
+	* case post_type = 'page' : disp error customfields -> repair
+	* changed old-custom-fields.php line 130
+	* 
+	* PHP 5.*
+	* WordPress 3.13ja
 
 	= 1.1.2 =
 	* setup page : same input name -> error, 2bite input name error, same input name error

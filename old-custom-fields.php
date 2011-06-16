@@ -3,7 +3,7 @@
 Plugin Name:  Old Custom Fields
 Plugin URI:   http://doluck.net/
 Description:  custom fields setting plugin for wordpress.
-Version:      1.1.2　(for WordPress3.1.2ja)
+Version:      1.1.3　(for WordPress3.1.2ja)
 Author:       Akifumi Nishiakwa
 Author URI:   http://www.oldoffice.com/
 */
@@ -127,7 +127,7 @@ Author URI:   http://www.oldoffice.com/
 	$ocf_post = new ocf_post_class();
 	
 	/* disp custom fields @ post page */
-	$cur_post_type = ( isset($_REQUEST['post_type']) && $_REQUEST['post_type'] = 'page' ) ? 'page' : 'post';
+	$cur_post_type = ( isset($_REQUEST[ 'post' ] ) ) ? get_post_type( $_REQUEST[ 'post' ] ) : 'post';
 	add_meta_box( 'old_custom_fields', $box_name, array( &$ocf_post, 'ocf_post_page' ), $cur_post_type, 'normal', 'high' );
 	
 	/* save post data */
