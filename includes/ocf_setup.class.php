@@ -4,7 +4,7 @@
 
 	License   : Licensed under the MIT License
 	Author    : Akifumi Nishikawa( http://www.oldoffice.com/ )
-	Version   : 1.1.2　( for WordPress3.12ja )
+	Version   : 1.1.2
 	Update    : 2011-05-27
 	
 */

@@ -3,7 +3,7 @@
 Plugin Name:  Old Custom Fields
 Plugin URI:   http://doluck.net/
 Description:  custom fields setting plugin for wordpress.
-Version:      1.1.3　(for WordPress3.1.2ja)
+Version:      1.1.4　(for WordPress3.1.3ja)
 Author:       Akifumi Nishiakwa
 Author URI:   http://www.oldoffice.com/
 */
@@ -97,7 +97,7 @@ Author URI:   http://www.oldoffice.com/
 		echo $tag;
 	}
 	
-	if ( in_array( $pagenow, array('post.php', 'post-new.php') ) ) {
+	if ( in_array( $pagenow, array( 'post.php', 'post-new.php' ) ) ) {
 		add_action( 'admin_head', 'ocf_insert_head_post' );
 	}
 	
@@ -110,7 +110,7 @@ Author URI:   http://www.oldoffice.com/
 		echo $tag;
 	}
 	
-	if ( in_array( $pagenow, array('media-upload.php') ) ) {
+	if ( in_array( $pagenow, array( 'media-upload.php' ) ) ) {
 		add_action( 'admin_head', 'ocf_insert_head_madia_upload' );
 	}
 	
@@ -118,26 +118,26 @@ Author URI:   http://www.oldoffice.com/
 	function noflashuploader() {
 		return false;
 	}
-	add_filter('flash_uploader', 'noflashuploader', 5);
+	add_filter( 'flash_uploader', 'noflashuploader', 5 );
 	
 	/* DATA */
 
 	include_once( 'includes/ocf_post.class.php' );
 	include_once( ABSPATH.'wp-admin/includes/template.php' );
-	$ocf_post = new ocf_post_class();
+	$OCF_POST = new ocf_post_class();
 	
 	/* disp custom fields @ post page */
-	$cur_post_type = ( isset($_REQUEST[ 'post' ] ) ) ? get_post_type( $_REQUEST[ 'post' ] ) : 'post';
-	add_meta_box( 'old_custom_fields', $box_name, array( &$ocf_post, 'ocf_post_page' ), $cur_post_type, 'normal', 'high' );
+	$cur_post_type = ( isset( $_REQUEST[ 'post' ] ) ) ? get_post_type( $_REQUEST[ 'post' ] ) : 'post';
+	add_meta_box( 'old_custom_fields', $box_name, array( &$OCF_POST, 'ocf_post_page' ), $cur_post_type, 'normal', 'high' );
 	
 	/* save post data */
-	// (post and page) case: edit, post, add comment for post & page
-	add_action( 'edit_post', array( &$ocf_post, 'edit_meta_value' ) );
-	// (post and page) case: create_post, use import func, use edit page, use xml-rpc, use mail post
-	add_action( 'save_post', array( &$ocf_post, 'edit_meta_value' ) );
-	// (post) case: publish_post
-	add_action( 'publish_post', array( &$ocf_post, 'edit_meta_value' ) );
+	// (post and page) case: post-new, edit-post, add comment for post & page
+	add_action( 'edit_post', array( $OCF_POST, 'edit_meta_value' ) );
+	// (post and page) case: use import func, use xml-rpc, use mail post
+	add_action( 'save_post', array( $OCF_POST, 'edit_meta_value' ) );
+	// (post) case: publish-post
+	add_action( 'publish_post', array( $OCF_POST, 'edit_meta_value' ) );
 	// (page) case: transition_post_status
-	add_action( 'transition_post_status', array( &$ocf_post, 'edit_meta_value' ) );
+	add_action( 'transition_post_status', array( $OCF_POST, 'edit_meta_value' ) );
 
 ?>

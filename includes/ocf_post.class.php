@@ -4,7 +4,7 @@
 
 	License   : Licensed under the MIT License
 	Author    : Akifumi Nishikawa(http://www.duluck.net/)
-	Version   : 1.1.1　(for WordPress3.12ja)
+	Version   : 1.1.4
 	Update    : 2011-05-27
 	
 */
@@ -34,33 +34,33 @@ class ocf_post_class extends resize_image {
 
 		for( $i = 0; $i < count( $this->ocf_setup_data ); $i++ ){
 		
-			$value = $this->get_ocf_value_data( $this->ocf_setup_data[$i]['input_name'] );
+			$value = $this->get_ocf_value_data( $this->ocf_setup_data[ $i ][ 'input_name' ] );
 			
-			switch( $this->ocf_setup_data[$i]['type'] ) {
+			switch( $this->ocf_setup_data[ $i ][ 'type' ] ) {
 			
 				case 'text':
-					$tag .= $this->make_textfield( $i, $this->ocf_setup_data[$i], $value );
+					$tag .= $this->make_textfield( $i, $this->ocf_setup_data[ $i ], $value );
 					break;
 				case 'textarea':
-					$tag .= $this->make_textarea( $i, $this->ocf_setup_data[$i], $value );
+					$tag .= $this->make_textarea( $i, $this->ocf_setup_data[ $i ], $value );
 					break;
 				case 'image':
-					$tag .= $this->make_imagefield( $i, $this->ocf_setup_data[$i], $value );
+					$tag .= $this->make_imagefield( $i, $this->ocf_setup_data[ $i ], $value );
 					break;
 				case 'file':
-					$tag .= $this->make_filefield( $i, $this->ocf_setup_data[$i], $value );
+					$tag .= $this->make_filefield( $i, $this->ocf_setup_data[ $i ], $value );
 					break;
 				case 'checkbox':
-					$tag .= $this->make_checkbox( $i, $this->ocf_setup_data[$i], $value );
+					$tag .= $this->make_checkbox( $i, $this->ocf_setup_data[ $i ], $value );
 					break;
 				case 'radio':
-					$tag .= $this->make_radio( $i, $this->ocf_setup_data[$i], $value );
+					$tag .= $this->make_radio( $i, $this->ocf_setup_data[ $i ], $value );
 					break;
 				case 'select':
-					$tag .= $this->make_select( $i, $this->ocf_setup_data[$i], $value );
+					$tag .= $this->make_select( $i, $this->ocf_setup_data[ $i ], $value );
 					break;
 				case 'h5':
-					$tag .= $this->make_h5( $this->ocf_setup_data[$i]['h5_name'] );
+					$tag .= $this->make_h5( $this->ocf_setup_data[ $i ][ 'h5_name' ] );
 					break;
 				default:
 					$tag .= '';
@@ -101,7 +101,7 @@ class ocf_post_class extends resize_image {
 	/* FUNC. get custom field data */
 	private function get_ocf_value_data( $input_name ) {
 		$value = ( $this->postID ) ? get_post_meta( $this->postID, $input_name ) : '';
-		return $value[0];
+		return $value[ 0 ];
 	}
 	
 	
@@ -113,8 +113,8 @@ class ocf_post_class extends resize_image {
 		$inside = '';
 		$tb = "\t\t";
 		
-		$inside .= $tb."\t".'<p class="ocf_input"><input type="text" name="'.$setup['input_name'].'" value="'.$value.'" size="40" class="data" /></p>'."\n";
-		$inside .= ( $setup['caption'] ) ? $tb."\t".'<p class="ocf_caption">'.$setup['caption'].'</p>'."\n" : '' ;
+		$inside .= $tb."\t".'<p class="ocf_input"><input type="text" name="'.$setup[ 'input_name' ].'" value="'.$value.'" size="40" class="data" /></p>'."\n";
+		$inside .= ( $setup[ 'caption' ] ) ? $tb."\t".'<p class="ocf_caption">'.$setup[ 'caption' ].'</p>'."\n" : '' ;
 		
 		$tag = $this->disp_postbox( $num, $inside, $setup );
 		return $tag;
@@ -127,9 +127,9 @@ class ocf_post_class extends resize_image {
 		$tb = "\t\t";
 		
 		$inside .= $tb."\t".'<p class="ocf_input">'."\n";
-		$inside .= $tb."\t\t".'<textarea class="data" name="'.$setup['input_name'].'" type="textfield" rows="'.$setup['row_size'].'" cols="60">'.$value.'</textarea></p>'."\n";
+		$inside .= $tb."\t\t".'<textarea class="data" name="'.$setup[ 'input_name' ].'" type="textfield" rows="'.$setup[ 'row_size' ].'" cols="60">'.$value.'</textarea></p>'."\n";
 		$inside .= $tb."\t".'</p>'."\n";
-		$inside .= ( $setup['caption'] ) ? $tb."\t".'<p class="ocf_caption">'.$setup['caption'].'</p>'."\n" : '' ;
+		$inside .= ( $setup[ 'caption' ] ) ? $tb."\t".'<p class="ocf_caption">'.$setup[ 'caption' ].'</p>'."\n" : '' ;
 		
 		$tag = $this->disp_postbox( $num, $inside, $setup );
 		return $tag;
@@ -143,29 +143,29 @@ class ocf_post_class extends resize_image {
 		
 		$inside .= $tb."\t".'<div class="inside">'."\n";
 		$inside .= $tb."\t\t".'<p class="ocf_input">'."\n";
-		$inside .= $tb."\t\t\t".'<input type="hidden" name="'.$setup['input_name'].'" value="'.$value.'" class="data" />'."\n";
+		$inside .= $tb."\t\t\t".'<input type="hidden" name="'.$setup[ 'input_name' ].'" value="'.$value.'" class="data" />'."\n";
 		
-		$img_size_arr = $setup['list'];
+		$img_size_arr = $setup[ 'list' ];
 		
 		// thumbnail image size
 		for($i = 0; $i < count($img_size_arr); $i++) {
 		
 			$check_arr = array( 'fit', 'resize', 'wfit', 'hfit' );
 			
-			if( !in_array($img_size_arr[$i]["thum_type"], $check_arr ) ) {
+			if( !in_array($img_size_arr[ $i ][ "thum_type" ], $check_arr ) ) {
 				continue;
 			} else {
-				$width = isset( $img_size_arr[$i]["thum_size_w"] ) ? $img_size_arr[$i]["thum_size_w"] : 'auto';
-				$height = isset( $img_size_arr[$i]["thum_size_h"] ) ? $img_size_arr[$i]["thum_size_h"] : 'auto';
+				$width = isset( $img_size_arr[ $i ][ "thum_size_w" ] ) ? $img_size_arr[ $i ][ "thum_size_w" ] : 'auto';
+				$height = isset( $img_size_arr[ $i ][ "thum_size_h" ] ) ? $img_size_arr[ $i ][ "thum_size_h" ] : 'auto';
 				
 				if( !empty( $value ) ) {
-					$thum_value = $this->rename_image_fpath( $width, $height, $img_size_arr[$i]["thum_type"] );
+					$thum_value = $this->rename_image_fpath( $width, $height, $img_size_arr[ $i ][ "thum_type" ] );
 				} else {
 					$thum_value = '';
 				}
 				
-				$imgattr = $img_size_arr[$i]["thum_type"].'_'.$width.'_'.$height;
-				$name    = $setup['input_name'].'_'.$imgattr;
+				$imgattr = $img_size_arr[ $i ][ "thum_type" ].'_'.$width.'_'.$height;
+				$name    = $setup[ 'input_name' ].'_'.$imgattr;
 				$inside .= $tb."\t\t\t".'<input type="hidden" name="'.$name.'" value="'.$thum_value.'" class="thumdata" rel="'.$imgattr.'" />'."\n";
 			}
 		}
@@ -175,7 +175,7 @@ class ocf_post_class extends resize_image {
 		$inside .= $tb."\t\t".'<p class="up_file_value_box">'.urldecode( $value ).'</p>'."\n";
 		$inside .= $tb."\t\t".'<p class="ocf_image_cancel" style="display:none;"><a>画像を削除：<img alt="delete image" src="" /></a></p>'."\n";
 		$inside .= $tb."\t\t".'<p class="ocf_add_media"><a>画像を追加：<img alt="add image" src="images/media-button-image.gif" /></p></a>'."\n";
-		$inside .= ( $setup['caption'] ) ? $tb."\t\t".'<p class="ocf_caption">'.$setup['caption'].'</p>'."\n" : '' ;
+		$inside .= ( $setup[ 'caption' ] ) ? $tb."\t\t".'<p class="ocf_caption">'.$setup[ 'caption' ].'</p>'."\n" : '' ;
 		$inside .= $tb."\t".'</div>'."\n";
 		
 		$tag = $this->disp_postbox( $num, $inside, $setup );
@@ -208,12 +208,12 @@ class ocf_post_class extends resize_image {
 		
 		$inside .= $tb."\t".'<p class="ocf_input">'."\n";
 		$inside .= $tb."\t\t\t".'<p class="up_file_value_box">'.urldecode( $value ).'</p>'."\n";
-		$inside .= $tb."\t\t".'<input type="hidden" name="'.$setup['input_name'].'" value="'.$value.'" class="data" />'."\n";
+		$inside .= $tb."\t\t".'<input type="hidden" name="'.$setup[ 'input_name' ].'" value="'.$value.'" class="data" />'."\n";
 		$inside .= $tb."\t\t".'<img src="images/cancel.png" width="16" height="16" class="cancel" style="display:none;" />'."\n";
 		$inside .= $tb."\t".'</p>'."\n";
 		$inside .= $tb."\t".'<p class="ocf_file_cancel" style="display:none;"><a>ファイルを削除：<img alt="delete file" src="" /></a></p>'."\n";
 		$inside .= $tb."\t".'<p class="ocf_add_media"><a>ファイルを追加：<img alt="add file" src="images/media-button-other.gif" /></a></p>'."\n";
-		$inside .= ( $setup['caption'] ) ? $tb."\t".'<p class="ocf_caption">'.$setup['caption'].'</p>'."\n" : '' ;
+		$inside .= ( $setup[ 'caption' ] ) ? $tb."\t".'<p class="ocf_caption">'.$setup[ 'caption' ].'</p>'."\n" : '' ;
 		
 		$tag = $this->disp_postbox( $num, $inside, $setup );
 		return $tag;
@@ -227,19 +227,19 @@ class ocf_post_class extends resize_image {
 		
 		$value_arr = explode( ',', $value );
 		
-		for( $i = 0; $i < count( $setup['list'] ); $i++ ) {
-			if( count( $value_arr ) > 0 && in_array( $setup['list'][$i]['value'], $value_arr ) ) {
+		for( $i = 0; $i < count( $setup[ 'list' ] ); $i++ ) {
+			if( count( $value_arr ) > 0 && in_array( $setup[ 'list' ][ $i ][ 'value' ], $value_arr ) ) {
 				$checked = ' checked="checked"';
-			} elseif( !is_array( $value ) && $setup['list'][$i]['checked'] == 'checked' ) {
+			} elseif( !is_array( $value ) && $setup[ 'list' ][ $i ][ 'checked' ] == 'checked' ) {
 				$checked = ' checked="checked"';
 			} else {
 				$checked = '';
 			}
 			
-			$inside .= $tb."\t".'<p class="ocf_input"><label for="'.$setup['input_name'].'_'.( $i+1 ).'"><input type="checkbox" id="'.$setup['input_name'].'_'.( $i+1 ).'" name="'.$setup['input_name'].'[]" value="'.$setup['list'][$i]['value'].'"'.$checked.' /> '.$setup['list'][$i]['label'].'</label></p>'."\n";
+			$inside .= $tb."\t".'<p class="ocf_input"><label for="'.$setup[ 'input_name' ].'_'.( $i+1 ).'"><input type="checkbox" id="'.$setup[ 'input_name' ].'_'.( $i+1 ).'" name="'.$setup[ 'input_name' ].'[ ]" value="'.$setup[ 'list' ][ $i ][ 'value' ].'"'.$checked.' /> '.$setup[ 'list' ][ $i ][ 'label' ].'</label></p>'."\n";
 		}
 		
-		$inside .= ( $setup['caption'] ) ? $tb."\t".'<p class="ocf_caption">'.$setup['caption'].'</p>'."\n" : '' ;
+		$inside .= ( $setup[ 'caption' ] ) ? $tb."\t".'<p class="ocf_caption">'.$setup[ 'caption' ].'</p>'."\n" : '' ;
 		
 		$tag = $this->disp_postbox( $num, $inside, $setup );
 		return $tag;
@@ -251,21 +251,21 @@ class ocf_post_class extends resize_image {
 		$inside = '';
 		$tb = "\t\t";
 		
-		$setup['selected'] = ( $setup['selected'] ) ? $setup['selected'] : 'list_0';
+		$setup[ 'selected' ] = ( $setup[ 'selected' ] ) ? $setup[ 'selected' ] : 'list_0';
 		
-		for( $i = 0; $i < count( $setup['list'] ); $i++ ) {
-			if( !empty( $value ) && $setup['list'][$i]['value'] == $value ) {
+		for( $i = 0; $i < count( $setup[ 'list' ] ); $i++ ) {
+			if( !empty( $value ) && $setup[ 'list' ][ $i ][ 'value' ] == $value ) {
 				$checked = ' checked="checked"';
-			} elseif( empty( $value ) && $setup['selected'] == 'list_'.$i ) {
+			} elseif( empty( $value ) && $setup[ 'selected' ] == 'list_'.$i ) {
 				$checked = ' checked="checked"';
 			} else {
 				$checked = '';
 			}
 			
-			$inside .= $tb."\t".'<p class="ocf_input"><label for="'.$setup['input_name'].'_'.( $i+1 ).'"><input type="radio" id="'.$setup['input_name'].'_'.( $i+1 ).'" name="'.$setup['input_name'].'" value="'.$setup['list'][$i]['value'].'"'.$checked.' /> '.$setup['list'][$i]['label'].'</label></p>'."\n";
+			$inside .= $tb."\t".'<p class="ocf_input"><label for="'.$setup[ 'input_name' ].'_'.( $i+1 ).'"><input type="radio" id="'.$setup[ 'input_name' ].'_'.( $i+1 ).'" name="'.$setup[ 'input_name' ].'" value="'.$setup[ 'list' ][ $i ][ 'value' ].'"'.$checked.' /> '.$setup[ 'list' ][ $i ][ 'label' ].'</label></p>'."\n";
 		}
 		
-		$inside .= ( $setup['caption'] ) ? $tb."\t".'<p class="ocf_caption">'.$setup['caption'].'</p>'."\n" : '' ;
+		$inside .= ( $setup[ 'caption' ] ) ? $tb."\t".'<p class="ocf_caption">'.$setup[ 'caption' ].'</p>'."\n" : '' ;
 		
 		$tag = $this->disp_postbox( $num, $inside, $setup );
 		return $tag;
@@ -277,25 +277,25 @@ class ocf_post_class extends resize_image {
 		$inside = '';
 		$tb = "\t\t";
 		
-		$setup['selected'] = ( $setup['selected'] ) ? $setup['selected'] : 'list_0';
+		$setup[ 'selected' ] = ( $setup[ 'selected' ] ) ? $setup[ 'selected' ] : 'list_0';
 		
 		$inside .= $tb."\t".'<p class="ocf_input">'."\n";
-		$inside .= $tb."\t\t".'<select name="'.$setup['input_name'].'">'."\n";
+		$inside .= $tb."\t\t".'<select name="'.$setup[ 'input_name' ].'">'."\n";
 		
-		for( $i = 0; $i < count( $setup['list'] ); $i++ ) {
-			if( !empty( $value ) && $setup['list'][$i]['value'] == $value ) {
+		for( $i = 0; $i < count( $setup[ 'list' ] ); $i++ ) {
+			if( !empty( $value ) && $setup[ 'list' ][ $i ][ 'value' ] == $value ) {
 				$selected = ' selected="selected"';
-			} elseif( empty( $value ) && $setup['selected'] == 'list_'.$i ) {
+			} elseif( empty( $value ) && $setup[ 'selected' ] == 'list_'.$i ) {
 				$selected = ' selected="selected"';
 			} else {
 				$selected = '';
 			}
-			$inside .= $tb."\t\t\t".'<option value="'.$setup['list'][$i]['value'].'" class="data"'.$selected.'>&nbsp;'.$setup['list'][$i]['label'].'&nbsp;</option>'."\n";
+			$inside .= $tb."\t\t\t".'<option value="'.$setup[ 'list' ][ $i ][ 'value' ].'" class="data"'.$selected.'>&nbsp;'.$setup[ 'list' ][ $i ][ 'label' ].'&nbsp;</option>'."\n";
 		}
 		
 		$inside .= $tb."\t\t".'</select>'."\n";
 		$inside .= $tb."\t".'</p>'."\n";
-		$inside .= ( $setup['caption'] ) ? $tb."\t".'<p class="ocf_caption">'.$setup['caption'].'</p>'."\n" : '' ;
+		$inside .= ( $setup[ 'caption' ] ) ? $tb."\t".'<p class="ocf_caption">'.$setup[ 'caption' ].'</p>'."\n" : '' ;
 		
 		$tag = $this->disp_postbox( $num, $inside, $setup );
 		return $tag;
@@ -317,13 +317,13 @@ class ocf_post_class extends resize_image {
 		$tag = '';
 		$tb = "\t\t";
 		
-		$must = ( $setup['must'] == 'must' ) ? ' must' : '' ;
-		$inline = ( $setup['arrange'] == 'inline' ) ? ' inline' : '' ;
+		$must = ( $setup[ 'must' ] == 'must' ) ? ' must' : '' ;
+		$inline = ( $setup[ 'arrange' ] == 'inline' ) ? ' inline' : '' ;
 		$num = ( $num < 10 ) ? '0'.$num : $num ;
-		$setup['type'] = ( $setup['type'] == 'checkbox' ) ? 'check' : $setup['type'] ;
+		$setup[ 'type' ] = ( $setup[ 'type' ] == 'checkbox' ) ? 'check' : $setup[ 'type' ] ;
 		
-		$tag .= $tb.'<div class="postbox '.$setup['type'].$must.$inline.'" id="ocf_box'.$num.'_'.$setup['input_name'].'">'."\n";
-		$tag .= $tb."\t".'<h4 class="ocf_title">'.$setup['field_name'].'</h4>'."\n";
+		$tag .= $tb.'<div class="postbox '.$setup[ 'type' ].$must.$inline.'" id="ocf_box'.$num.'_'.$setup[ 'input_name' ].'">'."\n";
+		$tag .= $tb."\t".'<h4 class="ocf_title">'.$setup[ 'field_name' ].'</h4>'."\n";
 		$tag .= $inside;
 		$tag .= $tb.'</div>'."\n\n";
 		
@@ -345,13 +345,13 @@ class ocf_post_class extends resize_image {
 			return $id;
 		}
 		
-		if( !wp_verify_nonce( $_REQUEST['ocf_verify_key'], 'old_custom_fields' ) ) {
+		if( !wp_verify_nonce( $_REQUEST[ 'ocf_verify_key' ], 'old_custom_fields' ) ) {
 			return $id;
 		}
 		
 		for( $i = 0; $i < count( $this->ocf_setup_data ); $i++ ) {
 		
-			$input_name = $this->sanitize_name( $this->ocf_setup_data[$i]['input_name'] );
+			$input_name = $this->sanitize_name( $this->ocf_setup_data[ $i ][ 'input_name' ] );
 			$input_name = $wpdb->escape( stripslashes( trim( $input_name ) ) );
 			$val = ( is_array( $_REQUEST[ $input_name ] ) ) ? implode( ',', $_REQUEST[ $input_name ] ) : $_REQUEST[ $input_name ];
 			$meta_value = stripslashes( trim( $val ) ); // value from each custom fields
@@ -364,19 +364,19 @@ class ocf_post_class extends resize_image {
 			}
 			
 			// add thumbnail data
-			if( $this->ocf_setup_data[$i]['type'] == 'image' ) {
+			if( $this->ocf_setup_data[ $i ][ 'type' ] == 'image' ) {
 			
-				$img_size_arr = $this->ocf_setup_data[$i]['list'];
+				$img_size_arr = $this->ocf_setup_data[ $i ][ 'list' ];
 				
 				for( $j = 0; $j < count($img_size_arr); $j++ ) {
 					
-					$width = isset( $img_size_arr[$j]["thum_size_w"] ) ? $img_size_arr[$j]["thum_size_w"] : 'auto';
-					$height = isset( $img_size_arr[$j]["thum_size_h"] ) ? $img_size_arr[$j]["thum_size_h"] : 'auto';
+					$width = isset( $img_size_arr[ $j ][ "thum_size_w" ] ) ? $img_size_arr[ $j ][ "thum_size_w" ] : 'auto';
+					$height = isset( $img_size_arr[ $j ][ "thum_size_h" ] ) ? $img_size_arr[ $j ][ "thum_size_h" ] : 'auto';
 					
 					// thumbnail image path
-					$input_name_img_thum = $input_name.'_'.$img_size_arr[$j]["thum_type"].'_'.$width.'_'.$height;
+					$input_name_img_thum = $input_name.'_'.$img_size_arr[ $j ][ "thum_type" ].'_'.$width.'_'.$height;
 					$input_name_img_thum = $wpdb->escape( stripslashes( trim( $input_name_img_thum ) ) );
-					$val_img_thum = ( is_array( $_REQUEST[$input_name_img_thum] ) ) ? implode( ',', $_REQUEST[$input_name_img_thum] ) : $_REQUEST[$input_name_img_thum];
+					$val_img_thum = ( is_array( $_REQUEST[ $input_name_img_thum ] ) ) ? implode( ',', $_REQUEST[ $input_name_img_thum ] ) : $_REQUEST[ $input_name_img_thum ];
 					$meta_value_img_thum = stripslashes( trim( $val_img_thum ) );
 			
 					if( isset( $meta_value_img_thum ) && !empty( $meta_value_img_thum ) ) {

@@ -3,7 +3,7 @@
 	License   : Licensed under the MIT License
 	Author    : Akifumi Nishikawa(http://www.oldoffice.net/)
 	Thanks    : Genta Takamura
-	Version   : 1.1.2　(for WordPress3.12ja)
+	Version   : 1.1.4　(for WordPress3.12ja)
 	Update    : 2011-05-27
 	
 	jQuery 1.4.4
@@ -406,7 +406,7 @@
 			
 			for( i=0; i < inputNameArr.length; i++ ) {
 				
-				var check1Bite = inputNameArr[ i ].match(/^[a-zA-Z][a-zA-Z0-9_-]*$/);
+				var check1Bite = inputNameArr[ i ].match(/^[a-zA-Z][a-zA-Z0-9]*$/);
 				
 				if( ! inputNameArr[ i ] ) {
 					checkSameInputName = 'noData';
