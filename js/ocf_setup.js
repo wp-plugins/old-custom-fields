@@ -3,8 +3,8 @@
 	License   : Licensed under the MIT License
 	Author    : Akifumi Nishikawa(http://www.oldoffice.net/)
 	Thanks    : Genta Takamura
-	Version   : 1.1.4　(for WordPress3.12ja)
-	Update    : 2011-05-27
+	Version   : 1.1.6　(for WordPress3.12ja)
+	Update    : 2011-9-17
 	
 	jQuery 1.4.4
 */
@@ -206,7 +206,7 @@
 			
 			var	$currentDivBox      = $(this).parent().parent().parent(),
 				$prevDivBox         = $currentDivBox.prev(),
-				$cloneCurrentDivBox = $currentDivBox.clone(true);
+				$cloneCurrentDivBox = $currentDivBox.clone(true),
 				currentCaptionVal   = $('textarea', $currentDivBox).val(),
 				boxIndex            = $('.ocf_setup_box', $ocfMainCont).index($currentDivBox),
 				radioArr            = new Array(),
@@ -239,7 +239,7 @@
 			
 			var	$currentDivBox      = $(this).parent().parent().parent(),
 				$nextDivBox         = $currentDivBox.next(),
-				$cloneCurrentDivBox = $currentDivBox.clone(true);
+				$cloneCurrentDivBox = $currentDivBox.clone(true),
 				currentCaptionVal   = $('textarea', $currentDivBox).val(),
 				boxIndex            = $('.ocf_setup_box', $ocfMainCont).index($currentDivBox),
 				radioArr            = new Array(),
