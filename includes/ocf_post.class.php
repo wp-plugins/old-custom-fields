@@ -4,8 +4,8 @@
 
 	License   : Licensed under the MIT License
 	Author    : Akifumi Nishikawa(http://www.duluck.net/)
-	Version   : 1.1.4
-	Update    : 2011-05-27
+	Version   : 1.1.6
+	Update    : 2011-09-15
 	
 */
 
@@ -19,6 +19,8 @@ class ocf_post_class extends resize_image {
 	
 	### constructor
 	function __construct() {
+		//継承元 resize_image のコンストラクタを明示的に呼び出し。do
+		parent::__construct();
 		
 		$this->page_key = $page_key;
 		$this->postID = $postID;
@@ -159,7 +161,7 @@ class ocf_post_class extends resize_image {
 				$height = isset( $img_size_arr[ $i ][ "thum_size_h" ] ) ? $img_size_arr[ $i ][ "thum_size_h" ] : 'auto';
 				
 				if( !empty( $value ) ) {
-					$thum_value = $this->rename_image_fpath( $width, $height, $img_size_arr[ $i ][ "thum_type" ] );
+					$thum_value = $this->rename_image_fpath( $width, $height, $img_size_arr[ $i ][ "thum_type" ], $value );
 				} else {
 					$thum_value = '';
 				}
@@ -183,7 +185,7 @@ class ocf_post_class extends resize_image {
 	}
 	
 	/* FUNC. rename_image_fpath */
-	private function rename_image_fpath( $width, $height, $thum_type ) {
+	private function rename_image_fpath( $width, $height, $thum_type, $value ) {
 	
 		// multisite mode - wp
 		if ( is_multisite() ) {
