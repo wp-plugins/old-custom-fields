@@ -3,7 +3,7 @@
 Plugin Name:  Old Custom Fields
 Plugin URI:   http://doluck.net/
 Description:  custom fields setting plugin for wordpress.
-Version:      1.1.4　(for WordPress3.1.3ja)
+Version:      1.1.6　(for WordPress3.2.1ja)
 Author:       Akifumi Nishiakwa
 Author URI:   http://www.oldoffice.com/
 */
@@ -36,7 +36,7 @@ Author URI:   http://www.oldoffice.com/
 	
 	// plugin url&dir
 	if( !defined( 'OCF_PLUGIN_URL' ) ) {
-		define( 'OCF_PLUGIN_URL', get_option( 'wpurl' ).'/wp-content/plugins/old-custom-fields' );
+		define( 'OCF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 	}
 	if( !defined( 'OCF_PLUGIN_DIR' ) ) {
 		define( 'OCF_PLUGIN_DIR', ABSPATH.'wp-content/plugins/old-custom-fields' );
@@ -91,9 +91,9 @@ Author URI:   http://www.oldoffice.com/
 	function ocf_insert_head_post() {
 		
 		$tag = '';
-		$tag .= '<link rel="stylesheet" href="'.OCF_PLUGIN_URL.'/css/ocf_post.css" type="text/css" media="all" />'."\n";
-		$tag .= '<script type="text/javascript" src="'.OCF_PLUGIN_URL.'/js/cookie.js"></script>'."\n";
-		$tag .= '<script type="text/javascript" src="'.OCF_PLUGIN_URL.'/js/ocf_post.js"></script>'."\n";
+		$tag .= '<link rel="stylesheet" href="'.OCF_PLUGIN_URL.'css/ocf_post.css" type="text/css" media="all" />'."\n";
+		$tag .= '<script type="text/javascript" src="'.OCF_PLUGIN_URL.'js/cookie.js"></script>'."\n";
+		$tag .= '<script type="text/javascript" src="'.OCF_PLUGIN_URL.'js/ocf_post.js"></script>'."\n";
 		echo $tag;
 	}
 	
@@ -105,8 +105,8 @@ Author URI:   http://www.oldoffice.com/
 	function ocf_insert_head_madia_upload() {
 		
 		$tag = '';
-		$tag .= '<script type="text/javascript" src="'.OCF_PLUGIN_URL.'/js/cookie.js"></script>'."\n";
-		$tag .= '<script type="text/javascript" src="'.OCF_PLUGIN_URL.'/js/ocf_media_upload.js"></script>'."\n";
+		$tag .= '<script type="text/javascript" src="'.OCF_PLUGIN_URL.'js/cookie.js"></script>'."\n";
+		$tag .= '<script type="text/javascript" src="'.OCF_PLUGIN_URL.'js/ocf_media_upload.js"></script>'."\n";
 		echo $tag;
 	}
 	

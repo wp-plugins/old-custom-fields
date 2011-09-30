@@ -2,9 +2,9 @@
 Contributors: Akifumi Nishikawa
 Donate link: http://www.oldoffice.com/
 Tags: custom field,multisite,resize image
-Requires at least: 3.1.3ja
-Tested up to: 1.1.4
-Stable tag: 1.1.4
+Requires at least: 3.21ja
+Tested up to: 1.1.5
+Stable tag: 1.1.5
 
 	original custom fields setting plugin.
 	
@@ -23,6 +23,13 @@ Stable tag: 1.1.4
 
 
 == Changelog ==
+
+	= 1.1.5 =
+	* create thumbnail error -> repair
+	* changed includes/ocf_post.php, old-custom-fields.php
+	* 
+	* PHP 5.*
+	* WordPress 3.21ja
 
 	= 1.1.4 =
 	* case post_type = @setup page : 'input_name' can not use '-' && '_'
